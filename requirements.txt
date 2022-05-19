@@ -1,0 +1,7 @@
+pandas
+numpy
+sqlalchemy
+selenium
+pymysql
+configparser
+django
