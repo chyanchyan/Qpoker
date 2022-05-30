@@ -10,8 +10,8 @@ db_param = {
     'type': DB_TYPE,
     'host': DB_HOST,
     'port': DB_PORT,
-    'username': conf.get('db_params', 'username'),
-    'psw': conf.get('db_params', 'psw'),
+    'username': conf.get('db_admin', 'username'),
+    'psw': conf.get('db_admin', 'psw'),
     'schema': DB_SCHEMA,
     'charset': DB_CHARSET,
 }

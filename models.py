@@ -10,8 +10,8 @@ class Named:
     def __init__(self, *args, **kwargs):
         pass
 
-    name = Column(String(100))
-    nick = Column(String(100))
+    name = Column(String(100), primary_key=True)
+    nick = Column(String(100), primary_key=True)
 
 
 class Id:
@@ -35,8 +35,8 @@ class Player(Base, Id, Named):
     game_userid = Column(String(50))
 
 
-class Game(Base, Id, TimeRange):
-    __tablename__ = 'game'
+class CashGame(Base, Id, TimeRange):
+    __tablename__ = 'cash_game'
 
     sb = Column(Integer, default=1)
     bb = Column(Integer, default=2)
@@ -47,7 +47,7 @@ class Game(Base, Id, TimeRange):
 class Record(Base, Id):
     __tablename__ = 'record'
 
-    game_id = Column(Integer, ForeignKey('game.id'), nullable=False)
+    game_id = Column(Integer, ForeignKey('cash_game.id'), nullable=False)
     player_id = Column(Integer, ForeignKey('player.id'), nullable=False)
     points = Column(Integer, nullable=False)
     hands_count = Column(Integer)
@@ -55,7 +55,7 @@ class Record(Base, Id):
 
 def _test():
     p = Player(name='a', nick='aa')
-    g = Game(st_date=dt(2022, 5, 20, 21, 0, 0), ed_date=dt(2022, 5, 21, 0, 10, 0))
+    g = CashGame(st_date=dt(2022, 5, 20, 21, 0, 0), ed_date=dt(2022, 5, 21, 0, 10, 0))
     print(p.id)
     print(g.st_date)
 

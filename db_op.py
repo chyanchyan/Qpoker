@@ -1,10 +1,11 @@
 from sys_init import *
-from tables import *
+from models import *
 
 from sqlalchemy.orm import sessionmaker
 
 
-def ini_db(engine):
+def init_db(engine):
+    Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
 
 
@@ -65,6 +66,7 @@ def test_del():
 
 
 def test_update():
+
     session = get_session(DB_ENGINE)
 
     q = session.query(Player)
@@ -82,6 +84,5 @@ def test_update():
     print(p.name)
 
 
-
 if __name__ == '__main__':
-    test_update()
+    init_db(DB_ENGINE)

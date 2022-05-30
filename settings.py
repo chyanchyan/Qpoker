@@ -1,4 +1,4 @@
-DB_SCHEMA = 'internmate'
+DB_SCHEMA = 'qpoker'
 DB_TYPE = 'mysql'
 DB_HOST = 'localhost'
 DB_PORT = 3308

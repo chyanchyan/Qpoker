@@ -1,8 +1,7 @@
-pth = r'd:\icafe443_myd_2.txt'
+import numpy as np
 
-f = open(pth)
-code = ''.join(f.readlines())
 
-print(code)
-
-exec(code)
+a = np.array([1, 1, 1, 1, 1, 1])
+print(a.shape)
+a = a.reshape([6, 2])
+print(a)
