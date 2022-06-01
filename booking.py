@@ -108,13 +108,13 @@ def check():
 
 def booking():
 
-    recs = ['lfg', 3075,
-            'xg', 790,
-            'xy', 685,
-            'qq', -232,
-            'pp', -648,
-            'flb', -1500,
-            'yt', -2200
+    recs = ['qq', 97,
+            'xg', 339,
+            'bg', 2,
+            'yf', -392,
+            'll', -700,
+            'xy', 1579,
+            'yt', -925,
             ]
 
     booking_records(recs)
