@@ -69,7 +69,7 @@ def get_records(st_date: dt, ed_date: dt = dt.today()):
             except IndexError:
                 pass
 
-    res.to_excel('res.xlsx')
+    print(res)
 
 
 if __name__ == '__main__':
