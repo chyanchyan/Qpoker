@@ -78,24 +78,27 @@ def update_game_id():
     }
 
 
-def booking_records(recs):
+def booking_records(recs, date=dt.today()):
     session = get_session(DB_ENGINE)
     players = session.query(Player).all()
 
     p_nick_map_ids = dict(zip([p.nick for p in players], [p.id for p in players]))
 
-    g = CashGame()
+    g = CashGame(st_date=date)
     session.add(g)
     session.commit()
 
     recs = dict(zip(recs[::2], recs[1::2]))
 
-    for nick, rec in recs.items():
-        p_id = p_nick_map_ids[nick]
-        r = Record(game_id=g.id, player_id=p_id, points=rec)
-        session.add(r)
+    if sum(recs.values()) == 0:
+        for nick, rec in recs.items():
+            p_id = p_nick_map_ids[nick]
+            r = Record(game_id=g.id, player_id=p_id, points=rec)
+            session.add(r)
 
-    session.commit()
+        session.commit()
+    else:
+        print('sum of points not == 0')
 
 
 def check():
@@ -108,17 +111,19 @@ def check():
 
 def booking():
 
-    recs = ['qq', 97,
-            'xg', 339,
-            'bg', 2,
-            'yf', -392,
-            'll', -700,
-            'xy', 1579,
-            'yt', -925,
+    recs = ['bg', 3521,
+            'zp', 546,
+            'qq', 350,
+            'flb', 280,
+            'll', 123,
+            'lfg', 13,
+            'xg', 11,
+            'xy', -127,
+            'pp', -4717,
             ]
 
-    booking_records(recs)
+    booking_records(recs, date=dt(2022, 6, 5, 23, 0, 0))
 
 
 if __name__ == '__main__':
-    check()
+    booking()

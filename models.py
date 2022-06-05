@@ -6,19 +6,19 @@ from datetime import datetime as dt
 Base = declarative_base()
 
 
+class Id:
+    def __init__(self, *args, **kwargs):
+        pass
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+
+
 class Named:
     def __init__(self, *args, **kwargs):
         pass
 
     name = Column(String(100), primary_key=True)
     nick = Column(String(100), primary_key=True)
-
-
-class Id:
-    def __init__(self, *args, **kwargs):
-        pass
-
-    id = Column(Integer, primary_key=True, autoincrement=True)
 
 
 class TimeRange:
@@ -42,6 +42,8 @@ class CashGame(Base, Id, TimeRange):
     bb = Column(Integer, default=2)
     ante = Column(Integer, default=0)
     max_player = Column(Integer, default=9)
+
+
 
 
 class Record(Base, Id):

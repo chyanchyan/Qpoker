@@ -85,4 +85,12 @@ def test_update():
 
 
 if __name__ == '__main__':
-    init_db(DB_ENGINE)
+    Base.metadata.create_all(bind=DB_ENGINE)
+    session = get_session(DB_ENGINE)
+    s0 = Season(name='s0', nick='s0', st_date=dt(2022, 3, 23), ed_date=dt(2022, 6, 1))
+    s1 = Season(name='s1', nick='s1', st_date=dt(2022, 6, 1), ed_date=dt(2022, 10, 1))
+    s2 = Season(name='s1', nick='s2', st_date=dt(2022, 10, 1), ed_date=dt(2023, 1, 1))
+
+    session.add_all([s0, s1, s2])
+    session.commit()
+
